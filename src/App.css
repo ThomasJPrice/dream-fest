@@ -1,3 +1,48 @@
+@font-face {
+  font-family: 'PosterFont1';
+  src: url('./assets//fonts/SofaSansHand-Bold.woff2') format('woff2'),
+    url('./assets//fonts/SofaSansHand-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PosterFont1';
+  src: url('./assets//fonts/SofaSansHand-RegularDP.woff2') format('woff2'),
+    url('./assets//fonts/SofaSansHand-RegularDP.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* @font-face {
+  font-family: 'PosterFont2';
+  src: url('./assets//fonts/OvercameDemoRegular.woff2') format('woff2'),
+      url('./assets//fonts/OvercameDemoRegular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PosterFont2';
+  src: url('./assets//fonts/OvercameDemoBold.woff2') format('woff2'),
+      url('./assets//fonts/OvercameDemoBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+} */
+
+@font-face {
+  font-family: 'PosterFont3';
+  src: url('./assets//fonts/DaftBrush.woff2') format('woff2'),
+    url('./assets//fonts/DaftBrush.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 .main {
   width: 100vw;
   min-height: 100vh;
@@ -60,18 +105,62 @@
 }
 
 .gradientBg {
-  background: linear-gradient(40deg, rgba(66,4,126,1) 0%, rgba(7,244,158,1) 100%);
+  background: linear-gradient(40deg, rgba(66, 4, 126, 1) 0%, rgba(7, 244, 158, 1) 100%);
 }
 
 .hoverGradient:hover {
-  background: linear-gradient(40deg, rgba(66,4,126,1) 0%, rgba(7,244,158,1) 100%);
+  background: linear-gradient(40deg, rgba(66, 4, 126, 1) 0%, rgba(7, 244, 158, 1) 100%);
 }
 
 .selectorBorder {
   display: inline-flex;
   border: double 6px transparent;
   border-radius: 80px;
-  background-image: linear-gradient(40deg, rgba(66,4,126,1) 0%, rgba(7,244,158,1) 100%);
+  background-image: linear-gradient(40deg, rgba(66, 4, 126, 1) 0%, rgba(7, 244, 158, 1) 100%);
   background-origin: border-box;
   background-clip: content-box, border-box;
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-on-click {
+  animation: rotate360 1s linear;
+}
+
+
+.purpleBluePosterBg {
+  background: linear-gradient(40deg, rgba(66, 4, 126, 1) 0%, rgba(7, 244, 158, 1) 100%);
+}
+
+.blueRedPosterBg {
+  background: linear-gradient(40deg, rgb(9, 60, 119) 0%, rgb(221, 44, 44) 100%);
+}
+
+.orangeYellowPosterBg {
+  background: linear-gradient(40deg, #ff9966 0%, #ff5e62 100%);
+}
+
+.purpleSunriseBg {
+  background: linear-gradient(40deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+}
+
+
+.posterFont1 {
+  font-family: 'PosterFont1';
+}
+
+/* .posterFont2 {
+  font-family: 'PosterFont2';
+} */
+
+.posterFont3 {
+  font-family: 'PosterFont3';
 }

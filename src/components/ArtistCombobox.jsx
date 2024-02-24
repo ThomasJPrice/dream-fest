@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Combobox } from '@headlessui/react';
 
 import { AiOutlineEnter } from "react-icons/ai";
+import { useArtistImage } from '../utils';
 
 const ArtistCombobox = ({ currentlySelecting,
   setCurrentlySelecting,
@@ -9,26 +10,42 @@ const ArtistCombobox = ({ currentlySelecting,
   setArtistSelected,
   lineup,
   setLineup }) => {
+
   const [query, setQuery] = useState('');
   const [suggestedArtists, setSuggestedArtists] = useState([]);
-  const API_KEY = '7b3d6d0c4d10efd3a6b71de7ee251268';
 
-  function selectArtist(artistSelected, setLineup, lineup, currentlySelecting) {
+  const API_KEY = process.env.LASTFM_KEY;
+
+  var artistImage = useArtistImage(artistSelected)
+
+  async function selectArtist(artistSelected, setLineup, lineup) {
     if (currentlySelecting > 4) return
     if (artistSelected === '') return
 
+    const artistObject = {
+      name: artistSelected,
+      image: artistImage,
+    }
+
     var newLineup = lineup
-    newLineup[currentlySelecting] = artistSelected
+    newLineup[currentlySelecting] = artistObject
 
     setLineup(newLineup)
+
+    var tempSelecting = currentlySelecting + 1
     setCurrentlySelecting(currentlySelecting + 1)
-    setArtistSelected({ name: '' }); // Clear artistSelected
+
+    console.log(tempSelecting);
+    localStorage.setItem('lineup', JSON.stringify(lineup))
+    localStorage.setItem('currentlySelecting', JSON.stringify(tempSelecting))
+
+    setArtistSelected(''); // Clear artistSelected
     setQuery(''); // Clear query
   }
 
   function handleKeyPress(event) {
     if (event.key === 'Enter') {
-      selectArtist(artistSelected, setLineup, lineup, currentlySelecting);
+      selectArtist(artistSelected, setLineup, lineup);
     }
   }
 
@@ -46,11 +63,8 @@ const ArtistCombobox = ({ currentlySelecting,
         }
         const data = await response.json();
         if (data.results && data.results.artistmatches && data.results.artistmatches.artist) {
-          const artistsWithImages = data.results.artistmatches.artist.map(artist => ({
-            name: artist.name,
-            image: Array.isArray(artist.image) && artist.image.length > 0 ? artist.image[2]['#text'] : null // Selecting a suitable image size
-          }));
-          setSuggestedArtists(artistsWithImages.splice(0, 5));
+          const artists = data.results.artistmatches.artist.map(artist => (artist.name));
+          setSuggestedArtists(artists.splice(0, 5));
         } else {
           setSuggestedArtists([]);
         }
@@ -67,10 +81,8 @@ const ArtistCombobox = ({ currentlySelecting,
     <div className='w-full sm:w-[400px] gradientBg rounded-full items-center p-[3px]'>
       <div className='w-full flex gap-4 relative p-1 bg-[#f5f5f5] items-center rounded-full'>
         <div className='pl-2 flex-1'>
-          <Combobox value={artistSelected.name} onChange={(selectedArtist) => {
-            setArtistSelected({
-              name: selectedArtist,
-            })
+          <Combobox value={artistSelected} onChange={(selectedArtist) => {
+            setArtistSelected(selectedArtist)
           }}>
             <Combobox.Input
               onChange={(event) => setQuery(event.target.value)}
@@ -81,8 +93,8 @@ const ArtistCombobox = ({ currentlySelecting,
             {suggestedArtists.length > 0 && (
               <Combobox.Options className='absolute bg-[#f5f5f5] z-10 top-[56px] shadow-md'>
                 {suggestedArtists.map((artist, index) => (
-                  <Combobox.Option key={index} value={artist.name} className='hover:cursor-pointer hoverGradient hover:text-white py-1 px-2'>
-                    {artist.name}
+                  <Combobox.Option key={index} value={artist} className='hover:cursor-pointer hoverGradient hover:text-white py-1 px-2'>
+                    {artist}
                   </Combobox.Option>
                 ))}
               </Combobox.Options>
@@ -90,7 +102,7 @@ const ArtistCombobox = ({ currentlySelecting,
           </Combobox>
         </div>
 
-        <button className={`p-4 gradientBg rounded-full text-white ${currentlySelecting > 4 ? 'cursor-not-allowed' : 'cursor-pointer'}`} onClick={() => selectArtist(artistSelected, setLineup, lineup, currentlySelecting)}>
+        <button className={`p-4 gradientBg rounded-full text-white ${currentlySelecting > 4 ? 'cursor-not-allowed' : 'cursor-pointer'}`} onClick={() => selectArtist(artistSelected, setLineup, lineup)}>
           <AiOutlineEnter />
         </button>
       </div>

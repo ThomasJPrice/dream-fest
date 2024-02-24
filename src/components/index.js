@@ -3,7 +3,9 @@ import Navbar from "./Navbar";
 import LineupPicker from './LineupPicker'
 import ArtistCombobox from "./ArtistCombobox";
 import LineupArtist from "./LineupArtist";
-import ArtistImage from "./ArtistImage";
+import FestivalPoster from './FestivalPoster'
+import PosterOptions from "./PosterOptions";
+import PosterArtist from "./PosterArtist";
 
 export {
   Navbar,
@@ -11,5 +13,7 @@ export {
   LineupPicker,
   ArtistCombobox,
   LineupArtist,
-  ArtistImage
+  FestivalPoster,
+  PosterOptions,
+  PosterArtist
 }

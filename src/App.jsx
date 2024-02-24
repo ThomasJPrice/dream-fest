@@ -1,20 +1,27 @@
 import './App.css'
 
-import { Hero, LineupPicker, Navbar } from './components'
+import { Navbar } from './components'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Home, Create } from './pages'
 
 function App() {
   return (
-    <main>
-      <div className="main">
-        <div className="gradient" />
-      </div>
+    <Router>
+      <main>
+        <div className="main">
+          <div className="gradient" />
+        </div>
 
-      <div className='relative z-10 pb-20 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6'>
-        <Navbar />
-        <Hero />
-        <LineupPicker />
-      </div>
-    </main>
+        <div className='relative z-10 pb-20 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6'>
+          <Navbar />
+
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/create' element={<Create />} />
+          </Routes>
+        </div>
+      </main>
+    </Router>
   )
 }
 
