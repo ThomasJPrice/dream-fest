@@ -1,9 +1,15 @@
-const PosterArtist = ({ artist, imgWidth }) => {
+import { Textfit } from "react-textfit"
+
+const PosterArtist = ({ artist }) => {
   return (
-    <div className="flex flex-col gap-2 items-center">
-      <img className={imgWidth} src={artist.image} alt={artist.name} />
-      <p className="">{artist.name}</p>
-    </div>
+    <Textfit 
+      mode='single' 
+      forceSingleModeWidth={true}
+      className={`leading-none text-center uppercase drop-shadow-xl posterFont w-full`}
+      max={500}
+    >
+      {artist.name}
+    </Textfit>
   )
 }
 

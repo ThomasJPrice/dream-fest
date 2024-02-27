@@ -1,47 +1,5 @@
-@font-face {
-  font-family: 'PosterFont1';
-  src: url('./assets//fonts/SofaSansHand-Bold.woff2') format('woff2'),
-    url('./assets//fonts/SofaSansHand-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'PosterFont1';
-  src: url('./assets//fonts/SofaSansHand-RegularDP.woff2') format('woff2'),
-    url('./assets//fonts/SofaSansHand-RegularDP.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* @font-face {
-  font-family: 'PosterFont2';
-  src: url('./assets//fonts/OvercameDemoRegular.woff2') format('woff2'),
-      url('./assets//fonts/OvercameDemoRegular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'PosterFont2';
-  src: url('./assets//fonts/OvercameDemoBold.woff2') format('woff2'),
-      url('./assets//fonts/OvercameDemoBold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-} */
-
-@font-face {
-  font-family: 'PosterFont3';
-  src: url('./assets//fonts/DaftBrush.woff2') format('woff2'),
-    url('./assets//fonts/DaftBrush.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+@import url(https://db.onlinewebfonts.com/c/d7c9771543d2a1a4dc29546475727829?family=FrontageCondensed-3D);
+@import url(https://db.onlinewebfonts.com/c/22666f3327d67d77b16655c5a673bad2?family=Frontage+Condensed+Bold);
 
 .main {
   width: 100vw;
@@ -153,14 +111,22 @@
 }
 
 
-.posterFont1 {
+/* .posterFont1 {
   font-family: 'PosterFont1';
 }
 
-/* .posterFont2 {
+ .posterFont2 {
   font-family: 'PosterFont2';
-} */
+}
 
 .posterFont3 {
   font-family: 'PosterFont3';
+} */
+
+.posterFont {
+  font-family: 'FrontageCondensed-3D';
+}
+
+.subtitleFont {
+  font-family: "Frontage Condensed Bold";
 }

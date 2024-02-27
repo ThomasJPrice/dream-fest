@@ -2,19 +2,18 @@ import { useState } from "react";
 import { GrUpdate } from "react-icons/gr";
 
 import ColourSelector from "./ColourSelector";
-import FontSelector from "./FontSelector";
 
-const PosterOptions = ({ posterOptions, setPosterOptions }) => {
+const PosterOptions = ({ posterOptions, setPosterOptions, backgrounds }) => {
   const [title, setTitle] = useState(posterOptions.title)
   const [font, setFont] = useState(posterOptions.font)
-  const [background, setBackground] = useState(posterOptions.background)
+  const [backgroundIndex, setBackgroundIndex] = useState(posterOptions.backgroundIndex)
   const [isRotating, setIsRotating] = useState(false);
 
   const handleUpdate = () => {
     setIsRotating(true)
     setPosterOptions({
       title: title,
-      background: background,
+      backgroundIndex: backgroundIndex,
       font: font,
       headliner: posterOptions.headliner,
       supports: posterOptions.supports
@@ -39,13 +38,13 @@ const PosterOptions = ({ posterOptions, setPosterOptions }) => {
 
         <div>
           <p className="text-lg mb-1">Background colour</p>
-          <ColourSelector background={background} setBackground={setBackground} />
+          <ColourSelector backgrounds={backgrounds} backgroundIndex={backgroundIndex} setBackgroundIndex={setBackgroundIndex} />
         </div>
 
-        <div>
+        {/* <div>
           <p className="text-lg mb-1">Font</p>
           <FontSelector font={font} setFont={setFont} />
-        </div>
+        </div> */}
       </div>
 
       <button onClick={handleUpdate} className={`gradientBg py-2 px-6 rounded-full font-semibold text-white flex gap-2 items-center`}>Update <GrUpdate className={isRotating ? 'rotate-on-click' : ''} /></button>
