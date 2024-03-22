@@ -5,7 +5,7 @@ const PosterArtist = ({ artist }) => {
     <Textfit 
       mode='single' 
       forceSingleModeWidth={true}
-      className={`leading-none text-center uppercase drop-shadow-xl posterFont w-full`}
+      className={`leading-none text-center uppercase drop-shadow-xl posterFontMain w-full`}
       max={500}
     >
       {artist.name}

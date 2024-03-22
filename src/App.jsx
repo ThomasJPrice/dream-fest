@@ -8,11 +8,11 @@ function App() {
   return (
     <Router>
       <main>
-        <div className="main">
+        {/* <div className="main">
           <div className="gradient" />
-        </div>
+        </div> */}
 
-        <div className='relative z-10 pb-20 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6'>
+        <div className=' z-10 pb-20 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6'>
           <Navbar />
 
           <Routes>

@@ -3,6 +3,8 @@ import { GrUpdate } from "react-icons/gr";
 
 import ColourSelector from "./ColourSelector";
 
+import SavePoster from "./SavePoster";
+
 const PosterOptions = ({ posterOptions, setPosterOptions, backgrounds }) => {
   const [title, setTitle] = useState(posterOptions.title)
   const [font, setFont] = useState(posterOptions.font)
@@ -37,7 +39,7 @@ const PosterOptions = ({ posterOptions, setPosterOptions, backgrounds }) => {
         </div>
 
         <div>
-          <p className="text-lg mb-1">Background colour</p>
+          <p className="text-lg mb-1">Background</p>
           <ColourSelector backgrounds={backgrounds} backgroundIndex={backgroundIndex} setBackgroundIndex={setBackgroundIndex} />
         </div>
 
@@ -48,6 +50,8 @@ const PosterOptions = ({ posterOptions, setPosterOptions, backgrounds }) => {
       </div>
 
       <button onClick={handleUpdate} className={`gradientBg py-2 px-6 rounded-full font-semibold text-white flex gap-2 items-center`}>Update <GrUpdate className={isRotating ? 'rotate-on-click' : ''} /></button>
+
+      <SavePoster title={title} />
     </div>
   )
 }

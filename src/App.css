@@ -1,5 +1,20 @@
-@import url(https://db.onlinewebfonts.com/c/d7c9771543d2a1a4dc29546475727829?family=FrontageCondensed-3D);
-@import url(https://db.onlinewebfonts.com/c/22666f3327d67d77b16655c5a673bad2?family=Frontage+Condensed+Bold);
+@font-face {
+  font-family: 'FrontageCondensed3D';
+  src: url('./assets/fonts/FrontageCondensed-3D.woff2') format('woff2'),
+      url('./assets/fonts/FrontageCondensed-3D.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FrontageCondensedBold';
+  src: url('./assets/fonts/FrontageCondensed-Bold.woff2') format('woff2'),
+      url('./assets/fonts/FrontageCondensed-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 .main {
   width: 100vw;
@@ -93,40 +108,14 @@
   animation: rotate360 1s linear;
 }
 
-
-.purpleBluePosterBg {
-  background: linear-gradient(40deg, rgba(66, 4, 126, 1) 0%, rgba(7, 244, 158, 1) 100%);
+.posterFontMain {
+  font-family: 'FrontageCondensed3D';
 }
 
-.blueRedPosterBg {
-  background: linear-gradient(40deg, rgb(9, 60, 119) 0%, rgb(221, 44, 44) 100%);
+.posterFontSecondary {
+  font-family: "FrontageCondensedBold";
 }
 
-.orangeYellowPosterBg {
-  background: linear-gradient(40deg, #ff9966 0%, #ff5e62 100%);
-}
-
-.purpleSunriseBg {
-  background: linear-gradient(40deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
-}
-
-
-/* .posterFont1 {
-  font-family: 'PosterFont1';
-}
-
- .posterFont2 {
-  font-family: 'PosterFont2';
-}
-
-.posterFont3 {
-  font-family: 'PosterFont3';
-} */
-
-.posterFont {
-  font-family: 'FrontageCondensed-3D';
-}
-
-.subtitleFont {
-  font-family: "Frontage Condensed Bold";
+.redtext {
+  background: linear-gradient(40deg, rgba(66, 4, 126, 1) 0%, rgba(7, 244, 158, 1) 100%) !important;
 }
