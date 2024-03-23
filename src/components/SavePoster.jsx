@@ -41,6 +41,7 @@ const SavePoster = ({ title }) => {
 
       navigator.share({
         text: 'I just created my dream music festival on this site, you can too! https://dreamfest.netlifty.app 🎵🎵',
+        files: [file]
       }).then(() => {
         console.log('Shared successfully');
       }).catch((error) => {
