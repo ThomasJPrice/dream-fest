@@ -1,4 +1,4 @@
-import { Textfit } from "react-textfit"
+import { Textfit } from 'react-textfit';
 
 const PosterArtist = ({ artist }) => {
   return (

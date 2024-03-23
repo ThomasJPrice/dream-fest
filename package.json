@@ -35,5 +35,11 @@
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "vite": "^5.1.0"
+  },
+  "overrides": {
+    "react-textfit": {
+      "react": ">=15.0.0",
+      "react-dom": ">=15.0.0"
+    }
   }
 }

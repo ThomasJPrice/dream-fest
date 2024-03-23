@@ -16,13 +16,15 @@ const SavePoster = ({ title }) => {
   const [capturedImageUrl, setCapturedImageUrl] = useState('');
 
   const handleCapture = () => {
-    htmlToImage.toPng(document.getElementById('poster'))
-      .then(function (dataUrl) {
-        setCapturedImageUrl(dataUrl);
-      })
-      .catch(function (error) {
-        console.error('Error capturing image:', error);
-      });
+    if (document.getElementById('poster')) {
+      htmlToImage.toPng(document.getElementById('poster'))
+        .then(function (dataUrl) {
+          setCapturedImageUrl(dataUrl);
+        })
+        .catch(function (error) {
+          console.error('Error capturing image:', error);
+        });
+    }
   }
 
   handleCapture()
@@ -40,6 +42,7 @@ const SavePoster = ({ title }) => {
       navigator.share({
         title: 'Share Festival Poster',
         files: [file],
+        text: 'I just created my dream music festival on this site, you can too! https://dreamfest.netlifty.app 🎵🎵'
       }).then(() => {
         console.log('Shared successfully');
       }).catch((error) => {
