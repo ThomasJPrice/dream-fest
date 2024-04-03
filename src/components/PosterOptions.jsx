@@ -51,7 +51,7 @@ const PosterOptions = ({ posterOptions, setPosterOptions, backgrounds }) => {
 
       <button onClick={handleUpdate} className={`gradientBg py-2 px-6 rounded-full font-semibold text-white flex gap-2 items-center`}>Update <GrUpdate className={isRotating ? 'rotate-on-click' : ''} /></button>
 
-      <SavePoster title={title} />
+      <SavePoster title={title} posterOptions={posterOptions} />
     </div>
   )
 }

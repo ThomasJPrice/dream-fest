@@ -6,12 +6,14 @@ import { Dialog } from '@headlessui/react';
 
 import { IoMdDownload, IoMdShare } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
+import { FaSpotify } from "react-icons/fa";
 
 import '../App.css';
 import Loader from './Loader';
 import ShareButton from './ShareButton';
+import { spotifyLogin } from '../utils/spotify';
 
-const SavePoster = ({ title }) => {
+const SavePoster = ({ title, posterOptions }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [capturedImageUrl, setCapturedImageUrl] = useState('');
 
@@ -40,7 +42,7 @@ const SavePoster = ({ title }) => {
       const file = new File([blob], `${title}.png`, { type: blob.type });
 
       navigator.share({
-        text: 'I just created my dream music festival on this site, you can too! https://dreamfest.netlifty.app 🎵🎵',
+        text: 'I just created my dream music festival on this site, you can too! https://dreamfest.netlify.app 🎵🎵',
         files: [file]
       }).then(() => {
         console.log('Shared successfully');
@@ -69,12 +71,17 @@ const SavePoster = ({ title }) => {
     return new Blob([uInt8Array], { type: contentType });
   }
 
+  const makeSpotifyPlaylist = () => {
+    spotifyLogin(process.env.SPOTIFY_CLIENT_ID)
+    localStorage.setItem('festivalTitle', posterOptions.title)
+    localStorage.setItem('playlistCreated', 0)
+  }
 
   return (
     <>
       <button type='button' onClick={() => setIsOpen(true)} className='redtext py-2 px-6 w-full rounded-full font-semibold text-lg shadow-md text-white'>Share Festival!</button>
 
-      <Dialog open={isOpen} onClose={() => setIsOpen(false)} className='absolute p-4 rounded-lg shadow-xl bg-[#FCFCFC] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-40'>
+      <Dialog open={isOpen} onClose={() => setIsOpen(false)} className='absolute overflow-hidden max-md:w-[90%] overflow-y-scroll h-[90%] p-4 rounded-lg shadow-xl bg-[#FCFCFC] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-40'>
         <Dialog.Panel className='flex flex-col gap-4'>
           <div className='flex justify-between items-center'>
             <h3 className='font-bold text-2xl gradientBg bg-clip-text text-transparent'>Share your festival</h3>
@@ -83,11 +90,15 @@ const SavePoster = ({ title }) => {
             </button>
           </div>
 
-          {capturedImageUrl ? <img src={capturedImageUrl} alt="Captured Poster" /> : <Loader />}
+          {capturedImageUrl ? <img src={capturedImageUrl} alt="Captured Poster" className='w-full object-contain' /> : <Loader />}
 
           <div className='flex md:flex-row flex-col gap-4'>
             <ShareButton text='Download' icon={<IoMdDownload />} action={downloadImage} main />
             <ShareButton text='Share' icon={<IoMdShare />} action={shareImage} main />
+          </div>
+
+          <div>
+            <ShareButton text='Create Me A Spotify Playlist' icon={<FaSpotify />} action={makeSpotifyPlaylist} />
           </div>
 
         </Dialog.Panel>

@@ -4,8 +4,6 @@ const Lineup = ({ lineup, currentlySelecting }) => {
   const headliner = lineup[0]
   const supporters = [lineup[1], lineup[2], lineup[3], lineup[4]]
 
-  console.log(lineup);
-
   return (
     <div className="text-center flex flex-col gap-4 mt-12 w-full items-center">
       <h2 className="font-bold text-4xl relative text-gray-900">Lineup <div className="w-full absolute h-1 gradientBg" /></h2>

@@ -3,10 +3,13 @@ import './App.css'
 import { Navbar } from './components'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home, Create } from './pages'
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <Router>
+      <Toaster />
+      
       <main>
         {/* <div className="main">
           <div className="gradient" />

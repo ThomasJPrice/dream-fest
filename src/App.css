@@ -16,6 +16,19 @@
   font-display: swap;
 }
 
+
+/*width*/
+::-webkit-scrollbar {
+  width:8px;
+}
+
+/*track*/
+::-webkit-scrollbar-thumb {
+  background:linear-gradient(40deg, rgba(66, 4, 126, 1) 0%, rgba(7, 244, 158, 1) 100%);
+}
+
+
+
 .main {
   width: 100vw;
   min-height: 100vh;

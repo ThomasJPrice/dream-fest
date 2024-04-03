@@ -12,7 +12,8 @@ const ShareButton = ({ text, icon, action, main }) => {
       gap-2
       py-2
       rounded-lg
-      ${main ? 'gradientBg text-white' : ''}
+      text-white
+      ${main ? 'gradientBg' : 'bg-[#1DB954]'}
     `}
 
     // className="gradientBg w-full text-white font-semibold text-lg flex items-center justify-center gap-2 py-2 rounded-lg">
